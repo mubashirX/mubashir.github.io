@@ -11,6 +11,231 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.timeline-container {
+				padding: 2em 0;
+				background: #1b1f22;
+			}
+			.timeline-slider {
+				position: relative;
+				max-width: 1200px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			.timeline-slide {
+				display: none;
+				padding: 2em;
+				text-align: center;
+				animation: fade 0.5s ease-in-out;
+			}
+			.timeline-slide.active {
+				display: block;
+			}
+			.timeline-content {
+				background: rgba(255, 255, 255, 0.05);
+				padding: 2em;
+				border-radius: 8px;
+				margin: 1em 0;
+			}
+			.timeline-content h3 {
+				color: #ffffff;
+				margin-bottom: 0.5em;
+			}
+			.timeline-content .date {
+				color: #18bfef;
+				font-size: 0.9em;
+				margin-bottom: 1em;
+			}
+			.timeline-content p {
+				color: #ffffff;
+				opacity: 0.8;
+			}
+			.timeline-nav {
+				text-align: center;
+				margin-top: 1.5em;
+				padding: 1em;
+			}
+			.timeline-nav button {
+				background: #18bfef;
+				border: none;
+				color: #ffffff;
+				padding: 0.8em 2em;
+				margin: 0 1em;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				font-size: 1.1em;
+				font-weight: bold;
+				border-radius: 5px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-width: 120px;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			.timeline-nav button:hover {
+				background: #ffffff;
+				color: #18bfef;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+			}
+			.timeline-nav button:active {
+				transform: translateY(0);
+				box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+			}
+			@keyframes fade {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+			.section-title {
+				text-align: center;
+				color: #ffffff;
+				margin-bottom: 2em;
+				font-size: 2em;
+			}
+			.testimonials-slider {
+				position: relative;
+				max-width: 1000px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			.testimonial-slide {
+				display: none;
+				padding: 2em;
+				text-align: center;
+				animation: fade 0.5s ease-in-out;
+			}
+			.testimonial-slide.active {
+				display: block;
+			}
+			.testimonial-content {
+				background: rgba(255, 255, 255, 0.05);
+				padding: 2em;
+				border-radius: 8px;
+				margin: 1em 0;
+				display: flex;
+				align-items: center;
+				gap: 2em;
+			}
+			.testimonial-image {
+				flex: 0 0 300px;
+			}
+			.testimonial-image img {
+				width: 100%;
+				height: auto;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+			}
+			.testimonial-text {
+				flex: 1;
+				text-align: left;
+			}
+			.testimonial-text p {
+				color: #ffffff;
+				font-style: italic;
+				margin-bottom: 1em;
+				line-height: 1.6;
+			}
+			.student-info {
+				margin-top: 1em;
+			}
+			.student-info h4 {
+				color: #18bfef;
+				margin: 0;
+			}
+			.student-info span {
+				color: #ffffff;
+				opacity: 0.8;
+				font-size: 0.9em;
+			}
+			@media screen and (max-width: 736px) {
+				.testimonial-content {
+					flex-direction: column;
+				}
+				.testimonial-image {
+					flex: 0 0 auto;
+					max-width: 100%;
+				}
+			}
+			.review-screenshot {
+				width: 100%;
+				max-width: 800px;
+				height: auto;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+			}
+			.testimonial-content {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 1em;
+			}
+			.timeline-content .actions.special {
+				margin-top: 1.5em;
+			}
+			.timeline-content .actions.special .button {
+				background: #18bfef;
+				color: #ffffff;
+				border: none;
+				padding: 0.8em 2em;
+				font-size: 1.1em;
+				font-weight: bold;
+				border-radius: 5px;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-width: 120px;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				transition: all 0.3s ease;
+			}
+			.timeline-content .actions.special .button:hover {
+				background: #ffffff;
+				color: #18bfef;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+			}
+			.timeline-content .actions.special .button:active {
+				transform: translateY(0);
+				box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+			}
+			.posts {
+				display: grid !important;
+				grid-template-columns: repeat(2, 1fr) !important;
+				gap: 2em !important;
+				margin: 2em 0 !important;
+				width: 100% !important;
+			}
+			.posts article {
+				background: rgba(255, 255, 255, 0.05);
+				padding: 1.5em;
+				border-radius: 8px;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				width: 100% !important;
+				margin: 0 !important;
+				float: none !important;
+			}
+			.posts article .image {
+				margin: 1em 0;
+				width: 100% !important;
+			}
+			.posts article p {
+				margin: 1em 0;
+				flex-grow: 1;
+			}
+			.posts article .actions {
+				margin-top: auto;
+			}
+			@media screen and (max-width: 736px) {
+				.posts {
+					grid-template-columns: 1fr !important;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -52,25 +277,111 @@
 
 				<!-- Main -->
 					<div id="main">
+						<!-- Education Section -->
+						<section class="timeline-container">
+							<h2 class="section-title">Education</h2>
+							<div class="timeline-slider">
+								<div class="timeline-slide active">
+									<div class="timeline-content">
+										<h3>Bachelor of Science in Data Science</h3>
+										<div class="date">August 2021 - May 2025</div>
+										<p>National University of Computer and Emerging Sciences (FAST) Lahore, Pakistan<br>
+										</p>
+									</div>
+								</div>
+								<div class="timeline-slide">
+									<div class="timeline-content">
+										<h3>Intermediate in Computer Science (Physics)
+										</h3>
+										<div class="date">September 2019 - August 2021</div>
+										<p>Punjab Group of Colleges, Lahore, Pakistan</p>
+									</div>
+								</div>
+								
+							</div>
+							<div class="timeline-nav">
+								<button onclick="changeSlide('Education', -1)">Previous</button>
+								<button onclick="changeSlide('Education', 1)">Next</button>
+							</div>
+						</section>
+
+						<!-- Experience Section -->
+						<section class="timeline-container">
+							<h2 class="section-title">Experience</h2>
+							<div class="timeline-slider">
+								<div class="timeline-slide active">
+									<div class="timeline-content">
+										<h3>Preply Tutor (Data Science and Python)</h3>
+										<div class="date">2024 - Present</div>
+										<p>Teach Data Science and Python programming, covering data wrangling, ML, and stats<br>
+										 Assist students in coding exercises, real-world projects, and simplifying complex concepts<br>
+										 Received a Super Tutor Badge for excellence in teaching.</p>
+										<ul class="actions special">
+											<li><a href="https://preply.com/en/tutor/5085244" target="_blank" class="button">View My Preply Profile</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="timeline-nav">
+								<button onclick="changeSlide('Experience', -1)">Previous</button>
+								<button onclick="changeSlide('Experience', 1)">Next</button>
+							</div>
+						</section>
+
+						<!-- Testimonials Section -->
+						<section class="timeline-container">
+							<h2 class="section-title">Student Reviews</h2>
+							<div class="testimonials-slider">
+								<div class="testimonial-slide active">
+									<div class="testimonial-content">
+										<img src="images/image.png" alt="Student Review 1" class="review-screenshot" />
+									</div>
+								</div>
+								<div class="testimonial-slide">
+									<div class="testimonial-content">
+										<img src="images/c1.png" alt="Student Review 2" class="review-screenshot" />
+									</div>
+								</div>
+								<div class="testimonial-slide">
+									<div class="testimonial-content">
+										<img src="images/c2.png" alt="Student Review 3" class="review-screenshot" />
+									</div>
+								</div>
+								<div class="testimonial-slide">
+									<div class="testimonial-content">
+										<img src="images/c3.png" alt="Student Review 3" class="review-screenshot" />
+									</div>
+								</div>
+								<div class="testimonial-slide">
+									<div class="testimonial-content">
+										<img src="images/c4.png" alt="Student Review 3" class="review-screenshot" />
+									</div>
+								</div>
+								<div class="testimonial-slide">
+									<div class="testimonial-content">
+										<img src="images/c5.png" alt="Student Review 3" class="review-screenshot" />
+									</div>
+								</div>
+							</div>
+						</section>
 
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
 									<span  class="date">June 15, 2023</span>
-									<h2><a href="https://github.com/mubashirX/Data-Scraping-in-Python" target='_blank'>Data Scraping Using Python<br />
-									[ OLX LAPTOPS ] </a></h2>
-									<p>A data Scraping project using python libraries.<br />
-									It extract the data of laptops which are on Sale<br />
-									at that time</p>
+									<h2><a href="/" target='_blank'>Computer Visions in Football: Tracking and Analysis<br />
+									</a></h2>
+									<p>Developing a Model that is used to track the football players and analyze their performance of team and formation and Provide In depth Analysis for Coachs</p>
 								</header>
-								<a href="https://github.com/mubashirX/Data-Scraping-in-Python" target='_blank' class="image main"><img src="images/data_scraping.jpg" alt="" /></a>
+								<a href="/" target='_blank' class="image main"><img src="images/foot.png" alt="" /></a>
 								<ul class="actions special">
-									<li><a href="https://github.com/mubashirX/Data-Scraping-in-Python" target='_blank' class="button large">View Project</a></li>
+									<li><a href="/" target='_blank' class="button large">View Project</a></li>
 								</ul>
 							</article>
 
 						<!-- Posts -->
 							<section class="posts">
+							
 								<article>
 									<header>
 										<span class="date">June 18, 2023</span>
@@ -85,6 +396,30 @@
 								</article>
 								<article>
 									<header>
+										<span class="date">August 2023</span>
+										<h2><a href="https://github.com/mubashirX/Layman-Data-Manipulation" target='_blank'>Layman Data Manipulation<br />
+										</a></h2>
+									</header>
+									<a href="https://nocode-ml-byme.streamlit.app/" target='_blank' class="image fit"><img src="images/nc.png" alt="" /></a>
+									<p>A user-friendly web application that enables non-technical users to perform data manipulation tasks through an intuitive interface. Features include data cleaning, transformation, and basic statistical analysis without writing any code. Built with Streamlit and Python.</p>
+									<ul class="actions special">
+										<li><a href="https://nocode-ml-byme.streamlit.app/" target='_blank' class="button">View Project</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<span class="date">July 2023</span>
+										<h2><a href="https://github.com/mubashirX/Crime-Detection" target='_blank'>Crime Detection<br />
+										</a></h2>
+									</header>
+									<a href="https://github.com/mubashirX/Crime-Detection" target='_blank' class="image fit"><img src="images/cd.png" alt="" /></a>
+									<p>An advanced NLP system using BERT for crime detection and classification from text data. The model can analyze crime reports, news articles, and social media posts to identify and categorize criminal activities. Includes real-time processing capabilities and high accuracy metrics.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/mubashirX/Crime-Detection" target='_blank' class="button">View Project</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
 										<span class="date">March, 2023</span>
 										<h2><a href="https://github.com/mubashirX/Power-BI"  target='_blank'>Lionel Messi<br />
 										Club Career Goals </a></h2>
@@ -93,6 +428,20 @@
 									<p>Analyzing and creating Simple dashboard of Messi's Club Career Goals in Power BI and Python </p>
 									<ul class="actions special">
 										<li><a href="https://github.com/mubashirX/Power-BI" target='_blank' class="button">View Project</a></li>
+									</ul>
+								</article>
+								
+								
+								<article>
+									<header>
+										<span class="date">September 2023</span>
+										<h2><a href="https://github.com/mubashirX/Data-Scraping-in-Python" target='_blank'>Data Scraping Using Python<br />
+										</a></h2>
+									</header>
+									<a href="https://github.com/mubashirX/Data-Scraping-in-Python" target='_blank' class="image fit"><img src="images/data_scraping.jpg" alt="" /></a>
+									<p>A robust web scraping solution built with Python, focusing on e-commerce data extraction. The system efficiently collects product information, prices, and specifications from OLX laptops listings. Features include automated data cleaning, storage, and analysis capabilities.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/mubashirX/Data-Scraping-in-Python" target='_blank' class="button">View Project</a></li>
 									</ul>
 								</article>
 								<!--<article>
@@ -147,17 +496,7 @@
 
 						<!-- Footer -->
 							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
+								<!-- Removing the pagination section -->
 							</footer>
 
 					</div>
@@ -226,6 +565,43 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function changeSlide(section, direction) {
+					// Find the correct section
+					const sections = document.querySelectorAll('.timeline-container');
+					let targetSection;
+					for (let s of sections) {
+						if (s.querySelector('.section-title').textContent.toLowerCase() === section.toLowerCase()) {
+							targetSection = s;
+							break;
+						}
+					}
+					
+					if (!targetSection) return;
+					
+					const slider = targetSection.querySelector('.timeline-slider');
+					const slides = slider.querySelectorAll('.timeline-slide');
+					let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+					
+					slides[currentIndex].classList.remove('active');
+					currentIndex = (currentIndex + direction + slides.length) % slides.length;
+					slides[currentIndex].classList.add('active');
+				}
+
+				// Auto-slide testimonials
+				function autoSlideTestimonials() {
+					const slider = document.querySelector('.testimonials-slider');
+					const slides = slider.querySelectorAll('.testimonial-slide');
+					let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+					
+					slides[currentIndex].classList.remove('active');
+					currentIndex = (currentIndex + 1) % slides.length;
+					slides[currentIndex].classList.add('active');
+				}
+
+				// Start auto-sliding
+				setInterval(autoSlideTestimonials, 5000); // Change slide every 5 seconds
+			</script>
 
 	</body>
 </html>
